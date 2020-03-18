@@ -132,6 +132,36 @@
                     treeItem.addClass(node.class);
                 }
 
+                // Add custom id to node if present
+                if (node.id) {
+                    treeItem.attr('id', node.id);
+                }
+
+
+
+                // Methods
+                jQuery.fn.extend({
+                    // expand/collapse a list depending on 'mode'
+                    // returns jQuery object with the menu item the method was called on (the item clicked to expand/collapse a list)
+                    bstreeCollapse: function(mode) {
+                        var list = this.next('.list-group'),
+                            collapsed;
+                        if (mode === 'show' && !list.hasClass('show')) {
+                            collapsed = list.collapse('show');
+                        } else if (mode === 'hide' && list.hasClass('show')) {
+                            collapsed = list.collapse('hide');
+                        }
+                        if (collapsed) {
+                            $('.state-icon', this)
+                                .toggleClass(_this.settings.expandIcon)
+                                .toggleClass(_this.settings.collapseIcon);
+                        }
+                        return this;
+                    }
+                });
+
+
+
                 // Attach node to parent.
                 parentElement.append(treeItem);
                 // Build child nodes.

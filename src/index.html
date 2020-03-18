@@ -1,20 +1,36 @@
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>bstreeview</title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
 		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link href="css/bstreeview.css" rel="stylesheet">
 </head>
-
 <body>
 	<div class="container">
 		<div class="content">
 			<div class="row">
 				<div class="col-md-6 pt-5">
-					<div id="tree">
+					<div id="tree"></div>
+					<div class="mt-4">
+						<button id="expandInbox" type="button" class="btn btn-primary">Expand Inbox</button>
+						<button id="collapseInbox" type="button" class="btn btn-primary">Collapse Inbox</button>
+					</div>
+					<div class="mt-4">
+						<h5>buton code:</h5>
+						<pre><code>$('#expandInbox').on('click', function() {
+  $('#menu-inbox').bstreeCollapse('show');
+});
 
+$('#collapseInbox').on('click', function() {
+  $('#menu-inbox').bstreeCollapse('hide');
+});</code></pre>
+						<p><strong>Note:</strong> You could simply use Bootstraps <code>collapse()</code> method to expand/collapse the
+							desired list group. But that would not automatically change the state icon.</p>
 					</div>
 				</div>
 			</div>
@@ -31,10 +47,11 @@
 	<script>
 		$(function () {
 
-			var json = [
+			var json = JSON.stringify([
 				{
 					text: "Inbox",
 					icon: "fa fa-inbox",
+					id: "menu-inbox",
 					nodes: [
 						{
 							text: "Office",
@@ -72,9 +89,17 @@
 					icon: "fa fa-trash",
 					text: "Deleted Items"
 				}
-			];
+			]);
 
 			$('#tree').bstreeview({ data: json });
+
+			$('#expandInbox').on('click', function() {
+				$('#menu-inbox').bstreeCollapse('show');
+			});
+
+			$('#collapseInbox').on('click', function() {
+				$('#menu-inbox').bstreeCollapse('hide');
+			});
 
 		});
 	</script>

@@ -72,6 +72,7 @@ var tree = [
   {
     text: "Node 1",
     icon: "fa fa-folder",
+    id: "node-1",
     nodes: [
       {
         text: "Sub Node 1",
@@ -149,7 +150,10 @@ A custom `href` attribute value for a given node.
 #### class
 `String` `Optional`
 
-A class name or space separated list of class names to add to a given node.
+#### id
+`String` `Optional`
+
+ID attribute value to assign to a given node.
 
 
 
@@ -164,6 +168,12 @@ $('#tree').treeview({
 
 ## Methods
 
+#### bstreeCollapse(mode)
+Programmatically expand/collapse a list-group which is the immediately following sibling (having the class 'list-group') of the jQuery object the method was called on.
+
+**Parameter:** **_mode_** can either be `'show'` or `'hide'`
+
+**Returns:** the jQuery object the method was called on
 
 ## Events
 
