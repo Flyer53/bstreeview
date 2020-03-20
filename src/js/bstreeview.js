@@ -16,6 +16,8 @@
         defaults = {
             expandIcon: 'fa fa-angle-down',
             collapseIcon: 'fa fa-angle-right',
+            // expandIcon: 'show',
+            // collapseIcon: 'hide',
             indent: 1.25
         };
     /**
@@ -155,6 +157,16 @@
                             $('.state-icon', this)
                                 .toggleClass(_this.settings.expandIcon)
                                 .toggleClass(_this.settings.collapseIcon);
+                        }
+                        return this;
+                    },
+                    // disable/enable a menu item
+                    // returns jQuery object with the menu item the method was called on (the menu item disabled or enabled)
+                    bstreeItemDisable: function(disable) {
+                        if (disable) {
+                            this.addClass('disabled');
+                        } else {
+                            this.removeClass('disabled');
                         }
                         return this;
                     }
