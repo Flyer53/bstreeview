@@ -168,14 +168,14 @@ $('#tree').treeview({
 
 ## Methods
 
-#### bstreeCollapse(mode)
+### bstreeCollapse(mode)
 Programmatically expand/collapse a list-group which is the immediately following sibling (having the class 'list-group') of the jQuery object the method was called on.
 
 **Parameter:** **_mode_** can either be `'show'` or `'hide'`
 
 **Returns:** the jQuery object the method was called on
 
-#### bstreeItemDisable(mode)
+### bstreeItemDisable(mode)
 Programmatically disable/enable a list-group-item.
 
 **Parameter:** **_mode_** can either be `true` (to disable the menu item) or `false` (to enable a menu item)
