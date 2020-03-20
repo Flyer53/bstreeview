@@ -175,6 +175,13 @@ Programmatically expand/collapse a list-group which is the immediately following
 
 **Returns:** the jQuery object the method was called on
 
+#### bstreeItemDisable(mode)
+Programmatically disable/enable a list-group-item.
+
+**Parameter:** **_mode_** can either be `true` (to disable the menu item) or `false` (to enable a menu item)
+
+**Returns:** the jQuery object the method was called on
+
 ## Events
 
 
