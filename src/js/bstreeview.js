@@ -64,10 +64,16 @@
             var _this = this;
             this.build($(this.element), this.tree, 0);
             // Update angle icon on collapse
-            $('.bstreeview').on('click', '.list-group-item', function () {
+            $('.bstreeview').on('click', '.list-group-item', function (e) {
                 $('.state-icon', this)
                     .toggleClass(_this.settings.expandIcon)
                     .toggleClass(_this.settings.collapseIcon);
+                // navigate to href if present
+                var tgt = e.target;
+                var href = tgt.hasAttribute('href') ? tgt.getAttribute('href') : null;
+                if (href) {
+                    window.location = href;
+                }
             });
         },
         /**
