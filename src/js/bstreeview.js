@@ -1,6 +1,6 @@
 /*! @preserve
  * bstreeview.js
- * Version: 1.0.0
+ * Version: 1.1.0
  * Authors: Sami CHNITER <sami.chniter@gmail.com>
  * Copyright 2020
  * License: Apache License 2.0
@@ -25,7 +25,7 @@
      */
     var templates = {
         treeview: '<div class="bstreeview"></div>',
-        treeviewItem: '<div class="list-group-item" data-toggle="collapse"></div>',
+        treeviewItem: '<div href="#itemid" class="list-group-item" data-toggle="collapse"></div>',
         treeviewGroupItem: '<div class="list-group collapse" id="itemid"></div>',
         treeviewItemStateIcon: '<i class="state-icon"></i>',
         treeviewItemIcon: '<i class="item-icon"></i>'
@@ -64,16 +64,10 @@
             var _this = this;
             this.build($(this.element), this.tree, 0);
             // Update angle icon on collapse
-            $('.bstreeview').on('click', '.list-group-item', function (e) {
+            $('.bstreeview').on('click', '.list-group-item', function () {
                 $('.state-icon', this)
                     .toggleClass(_this.settings.expandIcon)
                     .toggleClass(_this.settings.collapseIcon);
-                // navigate to href if present
-                var tgt = e.target;
-                var href = tgt.hasAttribute('href') ? tgt.getAttribute('href') : null;
-                if (href) {
-                    window.location = href;
-                }
             });
         },
         /**
@@ -113,7 +107,7 @@
             $.each(nodes, function addNodes(id, node) {
                 // Main node element.
                 var treeItem = $(templates.treeviewItem)
-                    .attr('data-target', "#" + _this.itemIdPrefix + node.nodeId)
+                    .attr('href', "#" + _this.itemIdPrefix + node.nodeId)
                     .attr('style', 'padding-left:' + leftPadding);
                 // Set Expand and Collapse icones.
                 if (node.nodes) {
